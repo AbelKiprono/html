@@ -1,0 +1,16 @@
+body{
+    background-color:#111111;
+
+}
+h1{
+    color: #FFFFFF
+}
+
+p{
+    color:#0fbc5d;
+    font-family: "consolas" sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    text-decoration:cyan dotted underline;
+    font-size: 15px;
+}

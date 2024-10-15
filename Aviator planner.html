@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviator Simulator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* Light blue */
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #f0f0f0; /* Light grey */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: darkcyan; /* Dark cyan */
+            text-align: center;
+        }
+
+        
+            
+    
+
+
+
+        p {
+            color: #333; /* Dark grey */
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #008080; /* Dark cyan */
+            color: #fff; /* White */
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #006666; /* Slightly darker cyan */
+        }
+        .progress-bar {
+            margin-top: 20px;
+            background-color: #ddd; /* Light grey */
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .progress {
+            background-color: #008080; /* Dark cyan */
+            height: 20px;
+            width: 0;
+            transition: width 0.5s ease;
+        }
+        .advice {
+            margin-top: 20px;
+            color: #333; /* Dark grey */
+        }
+        .advice p {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Thank me later,
+        Usisahau kuweka kwa hii <a href="0726172763">+254726172763</a> juu unawin😂😂</h2>
+    <div class="container">
+        <h1>THE AVIATOR RISK MANAGER BY <I><sup>KIPRONO(SIGNAL)</sup></I></h1>
+        <p>Initial Balance: Ksh <input type="number" id="initialBalance" value="100" /></p>
+        <p>Target Balance: Ksh <input type="number" id="targetBalance" value="200" /></p>
+        <button onclick="generateAdvice()">Generate Advice</button>
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+        <div class="advice" id="advice"></div>
+    </div>
+
+    <script>
+        function simulateAviatorRound() {
+            return (Math.random() * 9 + 1).toFixed(2); // Simulate a random crash multiplier between 1.0 and 10.0
+        }
+
+        function generateAdvice() {
+            const initialBalance = parseFloat(document.getElementById("initialBalance").value);
+            const targetBalance = parseFloat(document.getElementById("targetBalance").value);
+
+            if (initialBalance >= targetBalance) {
+                alert("Target balance should be higher than initial balance.");
+                return;
+            }
+
+            let balance = initialBalance;
+            let rounds = Math.ceil(targetBalance / initialBalance); // Dynamic number of rounds based on target balance
+            let wins = 0;
+            let losses = 0;
+            let betAmounts = [];
+
+            document.getElementById("progress").style.width = "0%"; // Reset progress bar
+
+            const progressInterval = setInterval(() => {
+                const progressWidth = (100 * (targetBalance - balance)) / (targetBalance - initialBalance);
+                document.getElementById("progress").style.width = progressWidth + "%";
+            }, 100);
+
+            for (let i = 0; i < rounds; i++) {
+                const crashMultiplier = simulateAviatorRound();
+
+                // Determine the bet amount based on risk management
+                const betAmount = Math.min(balance, (targetBalance - balance) / (rounds - i));
+                betAmounts.push(betAmount);
+
+                if (crashMultiplier >= 2.3) {
+                    balance += (2.3 - 1) * betAmount;
+                    wins++;
+                } else {
+                    balance -= betAmount;
+                    losses++;
+                }
+
+                if (balance >= targetBalance) {
+                    clearInterval(progressInterval); // Stop progress bar
+                    document.getElementById("progress").style.width = "100%";
+                    break;
+                }
+            }
+
+            // Generate the advice message
+            let advice = `<p>To reach the target balance of Ksh ${targetBalance}, you should play approximately ${rounds} rounds with the following bet amounts and cash-out multipliers:</p>`;
+            for (let i = 0; i < rounds; i++) {
+                const cashOutMultiplier = (i % 2 === 0) ? 1.5 : 2.0; // Alternate between 1.5x and 2.0x
+                advice += `<p>Round ${i + 1}: Bet Amount Ksh ${betAmounts[i].toFixed(2)}, Cash Out at ${cashOutMultiplier}x</p>`;
+            }
+
+            document.getElementById("advice").innerHTML = advice;
+        }
+    </script>
+</body>
+</html>

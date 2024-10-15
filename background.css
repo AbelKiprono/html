@@ -1,0 +1,19 @@
+   body{
+    background-image: url(jpg.jpg);
+    background-repeat: no-repeat;    
+background-attachment:fixed;
+background-position: center;
+background-size: cover;
+   }
+  
+  p{
+background: linear-gradient(  rgb(252, 215, 9), silver,green);
+background-repeat: no-repeat;    
+background-attachment:fixed;
+  }
+
+  h1{
+    background: linear-gradient( rgb(252, 215, 9), silver,green);
+    background-repeat: no-repeat;    
+    background-attachment:fixed;
+      }

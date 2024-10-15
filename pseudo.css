@@ -1,0 +1,49 @@
+  
+  
+  
+  a:link{
+    color:lawngreen;
+   }
+   a:vuisited{
+      color:darkorange;
+   }
+   a:hover{
+      color:blueviolet;
+   }
+   a:active{
+      color:grey;
+   }
+   
+
+
+   button:hover{
+      background-color: chartreuse;
+   }
+
+
+   button-active{
+      background-color: aquamarine;
+   }
+
+   /*
+   li:nth-child(6){
+      background-color: brown;
+
+     }
+     
+
+
+     li:nth-child(even){
+      background-color: brown;
+
+     }
+
+     li:nth-child(odd){
+      background-color: green;
+
+     }
+*/
+     li:nth-child(3n){
+      background-color: brown;
+
+     }

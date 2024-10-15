@@ -1,0 +1,13 @@
+h1{
+    border: 20px solid;
+    border-color:gold;
+font-family: sans-serif;
+}
+body{   
+    border: 20px solid;
+    font-family: sans-serif;
+   background-image:url(jpg.jpg);   
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
